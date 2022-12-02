@@ -73,7 +73,7 @@ def _cli(
         not sys.stdout.isatty(),
         "-q",
         "--quiet",
-        help="Enabled quiet mode. Suppresses messages and warnings. Errors will still be written to STDERR. Default to true if stdout is not a tty.",
+        help="Enable quiet mode. Suppresses messages and fancy formatting. Warning and errors will still be written to STDERR. Automatically enabled if stdout is not a tty.",
     ),
     skip_part2: bool = typer.Option(
         False,
@@ -141,7 +141,7 @@ def printAnswer(value: typing.Any) -> None:
 
 def printWarning(message: str) -> None:
     """Print a warning message."""
-    printMessage(f"[yellow italic]Warning: {message}[/]")
+    rich.print(f"[yellow italic]Warning: {message}[/]", file=sys.stderr)
 
 
 def printComputationWarning() -> None:
