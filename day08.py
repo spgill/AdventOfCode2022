@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 ### stdlib imports
-from functools import reduce
+import math
 
 ### local imports
 import utils
@@ -56,7 +56,7 @@ def part1(puzzleInput: str):
                     else:
                         component += 1
                 scenicComponents.append(component)
-            scenicScores.append(reduce(lambda x, y: x * y, scenicComponents))
+            scenicScores.append(math.prod(scenicComponents))
 
     # The answer is the count of visible trees, including the surrounding ones
     utils.printAnswer(visible + (yEnd * 2) + ((xEnd - 2) * 2))
